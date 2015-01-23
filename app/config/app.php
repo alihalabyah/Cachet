@@ -126,17 +126,18 @@ return [
         /*
          * Packages Service Providers...
          */
+        'CachetHQ\Segment\SegmentServiceProvider',
         'Dingo\Api\Provider\ApiServiceProvider',
-        'GrahamCampbell\Security\SecurityServiceProvider',
+        'Fideloper\Proxy\ProxyServiceProvider',
         'GrahamCampbell\Binput\BinputServiceProvider',
-        'GrahamCampbell\Throttle\ThrottleServiceProvider',
         'GrahamCampbell\Markdown\MarkdownServiceProvider',
-        'Roumen\Feed\FeedServiceProvider',
-        'Thujohn\Rss\RssServiceProvider',
+        'GrahamCampbell\Security\SecurityServiceProvider',
+        'GrahamCampbell\Throttle\ThrottleServiceProvider',
         'Jenssegers\Date\DateServiceProvider',
         'McCool\LaravelAutoPresenter\LaravelAutoPresenterServiceProvider',
         'PragmaRX\Google2FA\Vendor\Laravel\ServiceProvider',
-        'Fideloper\Proxy\ProxyServiceProvider',
+        'Roumen\Feed\FeedServiceProvider',
+        'Thujohn\Rss\RssServiceProvider',
 
         /*
          * Application Service Providers...

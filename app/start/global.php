@@ -1,6 +1,8 @@
 <?php
 
+use CachetHQ\Segment\Facades\Segment;
 use Dingo\Api\Facade\API;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Log;
 
 /*

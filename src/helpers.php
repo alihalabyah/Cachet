@@ -1,5 +1,6 @@
 <?php
 
+use CachetHQ\Segment\Facades\Segment;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Request;
 
@@ -76,5 +77,71 @@ if (!function_exists('set_active')) {
         $class = implode(' ', $classes);
 
         return empty($classes) ? '' : "class=\"{$class}\"";
+    }
+}
+
+if (!function_exists('segment_identify')) {
+    /**
+     * Identifies the user for Segment.com.
+     *
+     * @return bool
+     */
+    function segment_identify()
+    {
+        if (Setting::get('app_track')) {
+            return Segment::identify([
+                'userId' => Config::get('app.key'),
+            ]);
+        } else {
+            return false;
+        }
+    }
+}
+
+if (!function_exists('segment_track')) {
+    /**
+     * Tracks events in Segment.com.
+     *
+     * @param string $event
+     * @param array  $properties
+     *
+     * @return bool
+     */
+    function segment_track($event, array $properties)
+    {
+        if (Setting::get('app_track')) {
+            segment_identify(Config::get('app.key'));
+
+            return Segment::track([
+                'userId'     => Config::get('app.key'),
+                'event'      => $event,
+                'properties' => $properties,
+            ]);
+        } else {
+            return false;
+        }
+    }
+}
+
+if (!function_exists('segment_page')) {
+    /**
+     * Tracks pages in Segment.com.
+     *
+     * @param string $name
+     *
+     * @return bool
+     */
+    function segment_page($page)
+    {
+        if (Setting::get('app_track')) {
+            segment_identify(Config::get('app.key'));
+
+            return Segment::page([
+                'userId' => Config::get('app.key'),
+                'page'   => $page,
+            ]);
+        } else {
+            return false;
+        }
     }
 }
