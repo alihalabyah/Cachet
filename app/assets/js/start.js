@@ -29,7 +29,8 @@ $(function() {
 
     // Datepicker
     $('input[rel=date]').datepicker({
-        format: "dd/mm/yyyy"
+        format: "dd/mm/yyyy",
+        autoclose: true
     });
 
     // Mock the DELETE form requests.

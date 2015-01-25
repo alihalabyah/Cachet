@@ -44,7 +44,14 @@ class Incident extends Model implements TransformableInterface, PresenterInterfa
      *
      * @var string[]
      */
-    protected $fillable = ['user_id', 'component_id', 'name', 'status', 'message'];
+    protected $fillable = [
+        'user_id',
+        'component_id',
+        'name',
+        'status',
+        'message',
+        'published_at',
+    ];
 
     /**
      * The attributes that should be mutated to dates.
